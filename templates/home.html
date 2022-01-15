@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table id="table_id" class="display">
+  <thead>
+    <tr>
+      <th>Geography</th>
+      <th>Location</th>
+      <th>No Of Desks</th>
+      <th>mews</th>
+      <th>mr</th>
+      <th>toMr</th>
+      <th>fullyEquipedMonitor</th>
+      <th>fullyEquipedMonitorPercent</th>
+      <th>targetToFullyequipPercent</th>
+      <th>missingParts</th>
+      <th>additionalPart</th>
+      <th>comments</th>
+      <th>managerResponsible</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for row in returntooffice_list %}
+    <tr>
+      <td>{{row.geography}}</td>
+      <td>{{row.location}}</td>
+      <td>{{row.numberOfDesk}}</td>
+      <td>{{row.meaws}}</td>
+      <td>{{row.mr}}</td>
+      <td>{{row.mr}}</td>
+      <td>{{row.toMr}}</td>
+      <td>{{row.fullyEquipedMonitor}}</td>
+      <td>{{row.fullyEquipedMonitorPercent}}</td>
+      <td>{{row.targetToFullyequipPercent}}</td>
+      <td>{{row.additionalPart}}</td>
+      <td>{{row.comments}}</td>
+      <td>{{row.managerResponsible}}</td>
+      <td>{{row.text}}</td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+
+
+{% endblock content %}

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Returntooffice, Post
 
-# Register your models here.
+admin.site.register(Returntooffice)
+admin.site.register(Post)
