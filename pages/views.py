@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
 
 #rest apis
 from rest_framework.decorators import api_view
@@ -18,6 +19,7 @@ class HomePageView(ListView):
 
 #rest api methods
 @api_view(['GET', 'POST'])
+@csrf_exempt
 def return_to_view_collection(request):
     if request.method == 'GET':
         posts = Returntooffice.objects.all()
@@ -32,6 +34,7 @@ def return_to_view_collection(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+from django.views.decorators.csrf import csrf_exempt
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
 def return_to_view_element(request, pk):
     try:
