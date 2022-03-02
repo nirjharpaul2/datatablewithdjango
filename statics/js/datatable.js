@@ -22,9 +22,9 @@ $(document).ready(function () {
       },
       done: function (msg) {
         if (parseFloat(msg)) {
-          return false;
+          return msg;
         } else {
-          return true;
+          return msg;
         }
       }
     });
@@ -84,6 +84,19 @@ $(document).ready(function () {
       paramsBeingEdited.api.applyTransaction({
         update: [paramsBeingEdited.node.data]
       });
+    } else {
+      if(data) {
+        const result = saveDataToServer(data);
+        if (result.readyState == 4) {
+          const dataFromServer = JSON.parse(result.responseText);
+          toastr.success('Data saved', 'Server Says')
+          gridOptions.api.applyTransaction({
+            add: [dataFromServer],
+            addIndex: 0,
+          });
+        }
+      }
+     
     }
     paramsBeingEdited = undefined;
     $("#editRowForm").html('');
@@ -108,6 +121,26 @@ $(document).ready(function () {
     $("#editRowForm").html('');
     $('#editorModal').hide(500);
   });
+
+  $('#addNew').on('click', () => {
+    console.log('adding a new');
+    let data = {
+      "region": "",
+      "country": "",
+      "site": "",
+      "sitelead": "",
+      "email": "",
+      "sitedelegate": "",
+      "facilitieslead": "",
+      "securitylead": ""
+    }
+
+    createAndDisplayEditForm(data);
+  });
+
+  $('#exportToExcel').on('click', () => {
+    alert('In Progress, will be ready')
+  })
 
 
   function confirmAndDelete(message, params) {
@@ -145,6 +178,8 @@ $(document).ready(function () {
   };
 
   function createAndDisplayEditForm(dataObject) {
+
+    console.log(dataObject);
     $.each(dataObject, function (key, value) {
       var configEntry = editorConfig[key];
       if (configEntry !== undefined) {
@@ -298,7 +333,7 @@ $(document).ready(function () {
     },
     enableRangeSelection: true,
     allowContextMenuWithControlKey: true,
-
+    domLayout: 'autoHeight'
   };
 
   var gridDiv = document.querySelector("#myGrid");
