@@ -31,3 +31,17 @@ class Post(models.Model):
     def __str__(self):  # new
         return self.text[:50]
 
+class SiteContacts(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    region = models.CharField(max_length=30, default='')
+    country = models.CharField(max_length=30, default='')
+    site = models.CharField(max_length=30, default='')
+    sitelead = models.CharField(max_length=30, default='')
+    email = models.CharField(max_length=30, default='')
+    sitedelegate = models.CharField(max_length=150, default='')
+    facilitieslead = models.CharField(max_length=150, default='')
+    securitylead = models.CharField(max_length=150, default='')
+
+    def __str__(self):  # new
+        return self.region[:50]
+

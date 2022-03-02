@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from .models import Returntooffice
+from .models import Returntooffice, SiteContacts
 
 class ReturntoofficeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Returntooffice
         fields = ('id', 'geography', 'location', 'numberOfDesk', 'meaws', 'mr', 'toMr', 'fullyEquipedMonitor', 'fullyEquipedMonitorPercent', 'targetToFullyequipPercent', 'missingParts', 'additionalPart', 'comments', 'managerResponsible', 'text')
+
+class SiteContactsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SiteContacts
+        fields = ('id', 'region', 'country', 'site', 'sitelead', 'email', 'sitedelegate', 'facilitieslead', 'securitylead')

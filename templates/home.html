@@ -1,54 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
-<!--these templates are not usefull since we are trying to display the app by react-->
-<!--div>{% extends "base.html" %}
+<head>
+    <title>Grid Example</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bulmaswatch.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.0.custom.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toster.css' %}">
+    
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/toster.js' %}"></script>
+    <script src="{% static 'js/datatable.js' %}"></script>
 
-{% block content %}
-<table id="table_id" class="display">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Geography</th>
-      <th>Location</th>
-      <th>No Of Desks</th>
-      <th>mews</th>
-      <th>mr</th>
-      <th>toMr</th>
-      <th>fullyEquipedMonitor</th>
-      <th>fullyEquipedMonitorPercent</th>
-      <th>targetToFullyequipPercent</th>
-      <th>missingParts</th>
-      <th>additionalPart</th>
-      <th>comments</th>
-      <th>managerResponsible</th>
-      <th>text</th>
-    </tr>
-  </thead>
-  <tbody>
+</head>
 
-    {% for row in returntooffice_list %}
-    <tr>
-      <td>{{row.geography}}</td>
-      <td>{{row.location}}</td>
-      <td>{{row.numberOfDesk}}</td>
-      <td>{{row.meaws}}</td>
-      <td>{{row.mr}}</td>
-      <td>{{row.mr}}</td>
-      <td>{{row.toMr}}</td>
-      <td>{{row.fullyEquipedMonitor}}</td>
-      <td>{{row.fullyEquipedMonitorPercent}}</td>
-      <td>{{row.targetToFullyequipPercent}}</td>
-      <td>{{row.additionalPart}}</td>
-      <td>{{row.comments}}</td>
-      <td>{{row.managerResponsible}}</td>
-      <td>{{row.text}}</td>
-    </tr>
-    {% endfor %}
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+          </a>
 
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
 
-  </tbody>
-</table>
+    <div id="myGrid" style="height: 500px; width:100vW;" class="ag-theme-alpine"></div>
 
+    <div class="modal" id="editorModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Row Editor</p>
+                <button class="delete" aria-label="close" id="closepopupbutton"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="editRowForm">
 
-{% endblock content %}
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="saveButtonRow">Save changes</button>
+                <button class="button" id="popupCalcelButton">Cancel</button>
+            </footer>
+        </div>
+    </div>
+</body>
 
-</div-->
+</html>

@@ -1,0 +1,37 @@
+.action-button {
+    height: 20px;
+    width: 40px;
+    border: 2px;
+    font-weight: 300;
+    text-transform: capitalize;
+    padding: 2px;
+}
+
+.delete {
+    background: red;
+}
+
+.update {
+    width: 100px;
+}
+
+.cancel {
+    font-weight: 300;
+    margin: 0 5px;
+    text-transform: lowercase;
+    text-decoration: none;
+}
+
+.navbar {
+    background: white !important;
+}
+
+#editRowForm{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 111px;
+}
+
+#editRowForm div {
+    margin: 5px;
+}
