@@ -1,7 +1,48 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
-{% block content %}
+<head>
+    <title>Grid Example</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bulmaswatch.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui-1.10.0.custom.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toster.css' %}">
+    
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/toster.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="{% static 'js/excelprocessor.js' %}"></script>
 
-<h1>About Page</h1>
+</head>
 
-{% endblock content %}
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+          </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+
+           
+        </div>
+    </nav>
+
+    <div>
+        <span>Browse Excel File: </span> <input type="file" id="excelfilechooser"/>
+    </div>
+    <div>
+        <div id="ExcelTable"></div>
+    </div>
+</body>
+
+</html>
